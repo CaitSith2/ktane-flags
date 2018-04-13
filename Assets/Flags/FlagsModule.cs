@@ -255,32 +255,38 @@ public class FlagsModule : MonoBehaviour {
         command = command.ToUpperInvariant().Trim();
 
         if (command == "SUBMIT") {
+            yield return null;
             onSubmit();
             yield return null;
         }
         
         else if (command == "LEFT") {
+            yield return null;
             onLeft();
             yield return null;
         }
         
         else if (command == "RIGHT") {
+            yield return null;
             onRight();
             yield return null;
         }
         
-        else if (command == "CYCLE")
+        else if (command == "CYCLE") { 
+            yield return null;
             for (int i = 0; i < 7; i++) {
                 yield return new WaitForSeconds(0.75f);
                 onRight();
                 yield return new WaitForSeconds(0.75f);
             }
+        }
 
         else if (command.Length > 4 && command.Substring(0, 4) == "SET " || command.Length > 7 && command.Substring(0, 7) == "SUBMIT ") {
             string args = command[1] == 'E' ? command.Substring(4) : command.Substring(7);
 
             if (args.Length == 1 && "1234567".Contains(args)) {
                 int target = int.Parse(args);
+                yield return null;
 
                 while (target != position + 1) {
                     onRight();
