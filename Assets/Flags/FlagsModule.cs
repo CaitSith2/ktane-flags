@@ -297,6 +297,7 @@ public class FlagsModule : MonoBehaviour {
             else if (countryInfo.Find(x => x.CountryName.ToUpperInvariant() == args) != null) {
                 int cycle = 0;
 
+                yield return null;
                 while (countries[position].CountryName.ToUpperInvariant() != args && cycle++ < 7) {
                     onRight();
                     yield return new WaitForSeconds(0.1f);
