@@ -292,6 +292,9 @@ public class FlagsModule : MonoBehaviour {
                     onRight();
                     yield return new WaitForSeconds(0.1f);
                 }
+
+                if (command[1] == 'U')
+                    onSubmit();
             }
             
             else if (countryInfo.Find(x => x.CountryName.ToUpperInvariant() == args) != null) {
@@ -302,10 +305,19 @@ public class FlagsModule : MonoBehaviour {
                     onRight();
                     yield return new WaitForSeconds(0.1f);
                 }
-            }
 
-            if (command[1] == 'U')
-                onSubmit();
+                if (countries[position].CountryName.ToUpperInvariant() != args) {
+                    yield return "unsubmittablepenalty";
+                    yield break;
+                }
+
+                if (command[1] == 'U')
+                    onSubmit();
+            }
+            else { 
+                yield return string.Format("sendtochaterror Unknown country: {0}", args);
+            }
+            
         }
     }
 }
