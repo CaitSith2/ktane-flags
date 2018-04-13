@@ -254,19 +254,19 @@ public class FlagsModule : MonoBehaviour {
     private IEnumerator ProcessTwitchCommand(string command) {
         command = command.ToUpperInvariant().Trim();
 
-        if (command == "SUBMIT") {
+        if (command == "SUBMIT" || command == "PRESS SUBMIT") {
             yield return null;
             onSubmit();
             yield return null;
         }
         
-        else if (command == "LEFT") {
+        else if (command == "LEFT" || command == "PRESS LEFT") {
             yield return null;
             onLeft();
             yield return null;
         }
         
-        else if (command == "RIGHT") {
+        else if (command == "RIGHT" || command == "PRESS RIGHT") {
             yield return null;
             onRight();
             yield return null;
@@ -317,7 +317,6 @@ public class FlagsModule : MonoBehaviour {
             else { 
                 yield return string.Format("sendtochaterror Unknown country: {0}", args);
             }
-            
         }
     }
 }
